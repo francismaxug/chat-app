@@ -4,9 +4,7 @@ import { useEffect, useState } from "react"
 
 import { usePathname } from "next/navigation"
 import MainItemsPage from "./MainItemsPage"
-
-
-
+import DashBoardLeftFixedSideBar from "./DashBoardLeftFixedSideBar"
 
 const MainBackgroundHolder = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState(false)
@@ -32,12 +30,14 @@ const MainBackgroundHolder = ({ children }: { children: React.ReactNode }) => {
   // }, [])
   return (
     <>
-      
       <div className="">
-      
+        <div>
+          <DashBoardLeftFixedSideBar />
+        </div>
         <MainItemsPage open={open} setOpen={handleIsOpen}>
           {children}
         </MainItemsPage>
+        {/* <div className=" fixed left-[24rem] bottom-3 border">Heloooo</div> */}
       </div>
     </>
   )

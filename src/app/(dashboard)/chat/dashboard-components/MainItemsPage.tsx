@@ -1,7 +1,7 @@
 import React from "react"
-import { PiTextOutdentFill } from "react-icons/pi"
-
+import { FiSend } from "react-icons/fi"
 import Link from "next/link"
+import Header from "./Header"
 
 const MainItemsPage = ({
   children,
@@ -14,31 +14,26 @@ const MainItemsPage = ({
 }) => {
   return (
     <main
-      className={`relative px-3 lg:px-5 
-        lg:left-[250px] left-0
-      min-h-[90vh] 
+      className={`relative md:px-0 lg:px-0
+        lg:left-[250px] left-0 top-12
+     min-h-[81vh] mb-[6.5rem]
          lg:w-[calc(100%-250px)] w-[calc(100%-0px)]
-      bg-[#F4F4F4] border shadow-inner `}
+      bg-white rounded  border shadow-md mx-0 md:mx-0 lg:mx-6 `}
     >
-      <div className={`drop-shadow-lg mb-20 `}>{children}</div>
-      <div className="absolute bottom-0 w-[95%]">
-        <div className=" pb-[0.5rem] text-[0.8rem] flex justify-between items-center text-center flex-wrap">
-          <p>
-            &copy; {new Date().getFullYear()} made with ❤️ {""}
-            <a
-              href="https://github.com/francismaxug"
-              target="_blank"
-              className="text-dashboardBaseColor  "
-            >
-              by Francis Atinga Anaba
-            </a>{" "}
-            All rights reserved
-          </p>
-          <div className="  gap-x-5 hidden md:flex">
-            <p>License</p>
-            <p>Support</p>
-          </div>
-        </div>
+      <Header />
+      <div className={`drop-shadow-lg mb-10 `}>{children}</div>
+      <div className=" bg-white fixed lg:left-[480px] left-0 right-[20px] bottom-0 pb-2  lg:w-[calc(100%-650px)] lg:px-0 md:px-32 w-[calc(100%-0px)] z-20">
+        <form className=" border flex justify-between rounded-full items-center p-[0.15rem] px-3">
+          <input
+            type="text"
+            name=""
+            id=""
+            className=" w-full border-none outline-none h-4"
+          />
+          <button className="p-[0.4rem] bg-pinkBtn  ml-3 flex items-center justify-end rounded-full">
+            <FiSend className=" text-white" />
+          </button>
+        </form>
       </div>
     </main>
   )

@@ -85,7 +85,7 @@ const Signup = () => {
       <div className="hidden md:block ">
         <div className=" h-full overflow-hidden">
           <Image
-            src="/robot_sitting.jpg"
+            src="/images/robot_sitting.jpg"
             width={2000}
             height={2000}
             quality={80}

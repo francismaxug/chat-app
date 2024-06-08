@@ -2,6 +2,7 @@ import { Nunito } from "next/font/google"
 import { cookies } from "next/headers"
 
 import MainBackgroundHolder from "./MainBackgroundHolder"
+import Header from "./Header"
 
 const nunito = Nunito({
   weight: ["400", "700"],
@@ -35,7 +36,8 @@ const Demo = ({ children }: { children?: React.ReactNode }) => {
   // console.log(data)
   return (
     <>
-      <div className={` bg-[#F4F4F4] dark:bg-gray-900 ${nunito.className} `}>
+      <div className={`  dark:bg-gray-900 ${nunito.className} `}>
+        <Header />
         <MainBackgroundHolder>{children}</MainBackgroundHolder>
       </div>
     </>
