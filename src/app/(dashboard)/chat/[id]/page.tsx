@@ -1,13 +1,16 @@
 "use client"
+import React, { Suspense, useState } from "react"
+import Messages from "../dashboard-components/Messages"
 import Image from "next/image"
-import React from "react"
 import { IoMenuOutline } from "react-icons/io5"
-import { useState } from "react"
-import MobileMenuRecords from "./dashboard-components/MobileMenuRecords"
+import MobileMenuRecords from "../dashboard-components/MobileMenuRecords"
 import { AnimatePresence } from "framer-motion"
+import LoadingMessages from "../loading"
+
 const Chat = () => {
   const [showMenu, setShowMenu] = useState(false)
   console.log(showMenu)
+
   return (
     <main>
       <div className=" bg-topNav mb-3 px-2 sm:rounded py-3 sm:py-2 lg:py-1  items-center gap-x-1 flex justify-between">
@@ -30,24 +33,11 @@ const Chat = () => {
           />
         </button>
       </div>
-      <div className=" flex items-center justify-center mt-32 flex-col">
-        <div>
-          <Image
-            alt="profile"
-            src="/images/welcomeImage.png"
-            width={1000}
-            height={1000}
-            quality={80}
-            className=" w-16 h-20 object-fill object-center rounded-full"
-          />
-        </div>
-        <div>
-          <p className=" text-center">
-            Hii There!, select or create a conversation <br /> to start
-            chatting!!!
-          </p>
-        </div>
-      </div>
+      <Suspense fallback={<LoadingMessages />}>
+        {" "}
+        <Messages />
+      </Suspense>
+
       <AnimatePresence>{showMenu && <MobileMenuRecords />}</AnimatePresence>
     </main>
   )

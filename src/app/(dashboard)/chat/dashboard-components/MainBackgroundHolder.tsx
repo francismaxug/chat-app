@@ -1,11 +1,8 @@
-import { useState } from "react"
 
-import { usePathname } from "next/navigation"
 import MainItemsPage from "./MainItemsPage"
 import DashBoardLeftFixedSideBar from "./DashBoardLeftFixedSideBar"
-import dynamic from "next/dynamic"
 
-// const DynamicComponent = dynamic(() => import("./DashBoardLeftFixedSideBar"), { ssr: false }) // defaults to loading: LoadingComponent, and ssr: true
+
 
 const MainBackgroundHolder = ({ children }: { children: React.ReactNode }) => {
   return (

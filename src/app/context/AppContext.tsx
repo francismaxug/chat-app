@@ -1,15 +1,18 @@
 "use client"
-import { AllConversations } from "@/lib/types"
+import { ConversationMessages, ConversationsRecords } from "@/lib/types"
 import { createContext, useState, useContext, useEffect } from "react"
+import { toast } from "react-toastify"
 interface AppContextProps {
-  conversations: AllConversations[]
-  handleAddConversationRecord: (conversation: AllConversations) => void
+  conversationRecord: ConversationsRecords[]
+  handleAddConversationRecord: (conversation: ConversationsRecords) => void
   handleDeleteConversationRecord: (conversationId: number) => void
-  message: string
-  handleSetMessage: (message: string) => void
+  conversationMessage: ConversationMessages[]
   loading: boolean
   setLoading: (loading: boolean) => void
   authToken: string | null | undefined
+  queryConversationMessage: (id: number) => void
+  sendMessage: (message: string) => void
+  chatLoading: boolean
 }
 
 const token =
@@ -18,31 +21,113 @@ const token =
 const AppContext = createContext<AppContextProps | null>(null)
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [message, setMessage] = useState("")
+  //states
+  const [conversationMessage, setConversationMessage] = useState<
+    ConversationMessages[] | []
+  >([])
   const [loading, setLoading] = useState(true)
-  const [conversations, setConversations] = useState<AllConversations[]>([])
+
+  const [conversationRecord, setConversationRecord] = useState<
+    ConversationsRecords[] | []
+  >([])
+  const [convoId, setConvoId] = useState<number | null>(null)
+  const [chatLoading, setChatLoading] = useState(false)
   const [authToken, setAuthToken] = useState<string | null | undefined>(() => {
     if (typeof window !== "undefined") {
-      return window?.localStorage?.getItem("authToken")
+      return window.localStorage?.getItem("authToken")
     }
   })
 
-  // console.log(authToken)
+  console.log(authToken)
+  //Functions
 
-  const handleAddConversationRecord = (conversation: AllConversations) => {
-    setConversations((previous) => [...previous, conversation])
+  //Add records
+  const handleAddConversationRecord = (conversation: ConversationsRecords) => {
+    setConversationRecord((previous) => [...previous, conversation])
   }
+
+  //Delete records
   const handleDeleteConversationRecord = (conversationId: number) => {
     console.log(conversationId)
-    setConversations((previous) =>
+    setConversationRecord((previous) =>
       previous.filter((c) => c.id !== conversationId)
     )
   }
 
-  const handleSetMessage = (message: string) => {
-    setMessage(message)
+  // console.log(process.env.BASE_URL)
+  // console.log(process.env.AUTH_URL)
+
+  //send message
+  const sendMessage = async (message: string) => {
+    if (!convoId) {
+      console.log("hello")
+      return toast.error("Please select a conversation to start chatting")
+    }
+    const messageBody = {
+      conversation_id: convoId!,
+      id: Math.floor(Math.random() * 1000)!,
+      created_at: new Date(),
+      message: message,
+      content: message,
+      user_id: convoId,
+    }
+    console.log(message)
+
+    setConversationMessage((previous) => [...previous, messageBody])
+    setChatLoading(true)
+    try {
+      const response = await fetch(
+        `https://x8ki-letl-twmt.n7.xano.io/api:SSOLzzIz/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+          body: JSON.stringify({
+            conversation_id: messageBody.conversation_id,
+            message: messageBody.message,
+          }),
+        }
+      )
+      const data = await response.json()
+
+      setConversationMessage(() => [...data])
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setChatLoading(false)
+    }
   }
 
+  //Get conversation message by conversation Id
+  const queryConversationMessage = async (id: number) => {
+    setConvoId(id)
+    console.log(id)
+
+    try {
+      const response = await fetch(
+        `https://x8ki-letl-twmt.n7.xano.io/api:SSOLzzIz/conversation/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      )
+      const data = await response.json()
+      console.log(data)
+      setConversationMessage(data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  //Fexth conversation records
   useEffect(() => {
     const fetchConversations = async () => {
       try {
@@ -52,13 +137,12 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${authToken}`,
             },
           }
         )
         const data = await response.json()
-        // console.log(data)
-        setConversations(data)
+        setConversationRecord(data)
       } catch (error) {
         console.log(error)
       } finally {
@@ -68,17 +152,19 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     fetchConversations()
   }, [])
 
-  console.log(conversations)
+  console.log(conversationRecord)
   return (
     <AppContext.Provider
       value={{
-        message,
-        handleSetMessage,
+        sendMessage,
+        chatLoading,
+        conversationMessage,
+        queryConversationMessage,
         loading,
         setLoading,
         handleAddConversationRecord,
         handleDeleteConversationRecord,
-        conversations,
+        conversationRecord,
         authToken,
       }}
     >
@@ -87,6 +173,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
+//Define a custom hook to use the AppContext
 export const useAppContext = () => {
   const context = useContext(AppContext)
   if (!context) {

@@ -24,7 +24,7 @@ function SubmitFxn() {
         <>
           <button
             disabled
-            className=" text-center md:py-2 md:text-[0.82rem] flex items-center justify-center gap-x-2  text-[0.95rem] bg-topNav py-1 w-full font-manrope rounded text-white hover:bg-blue-400"
+            className=" text-center md:py-2 md:text-[0.82rem] flex items-center justify-center gap-x-2  text-[0.95rem] bg-topNav py-[0.6rem] sm:py-1 w-full font-manrope rounded text-white hover:bg-blue-400"
           >
             <Loader2 className=" animate-spin" />
             <p> Sign Up</p>
@@ -34,7 +34,7 @@ function SubmitFxn() {
         <button
           type="submit"
           disabled={pending}
-          className=" text-center md:py-2 md:text-[0.82rem]  text-[0.95rem] bg-topNav py-1 w-full font-manrope rounded text-white hover:bg-blue-400"
+          className=" text-center md:py-2 md:text-[0.82rem]  text-[0.95rem] bg-topNav py-[0.6rem] sm:py-1 w-full font-manrope rounded text-white hover:bg-blue-400"
         >
           Sign Up
         </button>
@@ -93,7 +93,7 @@ const Signup = () => {
                   name="email"
                   required
                   placeholder="text@mail.com"
-                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.4rem] text-grayColor w-full"
+                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -108,7 +108,7 @@ const Signup = () => {
                   name="name"
                   required
                   placeholder="Firstname Lastname"
-                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.4rem] text-grayColor w-full"
+                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -122,7 +122,7 @@ const Signup = () => {
                   type="password"
                   name="password"
                   required
-                  className=" border outline-none text-[0.85rem]  py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
+                  className=" border outline-none text-[0.85rem]  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -136,13 +136,13 @@ const Signup = () => {
                   name="confirmPassword"
                   required
                   type="password"
-                  className=" border outline-none text-[0.85rem]  py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
+                  className=" border outline-none text-[0.85rem] py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
                 />
               </div>
             </div>
             <SubmitFxn />
           </form>
-          <p className=" text-xs text-topNav">
+          <p className=" md:text-xs text-sm text-topNav">
             Dont have an account?{" "}
             <span>
               <Link href="/login" className="underline">

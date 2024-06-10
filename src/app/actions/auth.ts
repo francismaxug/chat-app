@@ -10,6 +10,8 @@ interface formState {
   date: Date
 }
 
+console.log(process.env.SECRET_KEY)
+
 const secretKey = (process.env.SECRET_KEY as string) || "secret"
 const key = new TextEncoder().encode(secretKey)
 
@@ -94,8 +96,7 @@ export async function login(
   const email = formdata.get("email") as string
   const password = formdata.get("password") as string
 
-  // console.log(adminID, password);
-  console.log(process.env.AUTH_URL)
+  // console.log(process.env.AUTH_URL)
 
   try {
     const response = await fetch(`${process.env.AUTH_URL}/login`, {
@@ -117,7 +118,7 @@ export async function login(
       }
     }
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     const user = {
       email,
     }
@@ -141,4 +142,11 @@ export async function login(
       date: new Date(),
     }
   }
+}
+
+
+export async function logout() {
+
+  // Destroy the session
+  cookies().set("session", "", { expires: new Date(0) })
 }

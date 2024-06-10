@@ -5,9 +5,17 @@ export interface InitState {
   date: Date
 }
 
-export interface AllConversations {
+export interface ConversationsRecords {
   id: number
   user_id: number
   label: string
+  created_at: Date
+}
+
+export interface ConversationMessages {
+  id: number
+  conversation_id: number
+  content: string
+  user_id: null | number
   created_at: Date
 }

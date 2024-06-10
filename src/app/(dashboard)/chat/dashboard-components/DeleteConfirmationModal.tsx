@@ -15,7 +15,7 @@ const ConfirmationModal = ({
   handleDeleteConversation: (conversationId: number) => void
 }) => {
   return createPortal(
-    <div className="fixed inset-0 z-[999] bg-modal   flex items-center justify-center">
+    <div className="fixed inset-0 z-[999] bg-modal   flex items-center justify-center px-3">
       <div className="bg-pinkBtn p-4 py-6 h-auto flex  duration-500 flex-col items-center justify-center rounded-lg shadow-md space-y-4 w-[23rem] animate-slide-up px-12">
         <div className=" flex flex-col justify-center items-center gap-y-7 w-full">
           <p className=" text-white leading-8">
