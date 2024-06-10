@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 import "@/styles/globals.css"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,10 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#E5E5E5]    w-full   h-screen">
+      <body className="bg-[#E5E5E5] w-ful h-screen">
         <main className=" bg-[#E5E5E5] px-3  border max-w-[54rem] m-auto  flex items-center justify-center md:justify-start  font-manrope">
           {children}
         </main>
+        <ToastContainer />
       </body>
     </html>
   )

@@ -24,6 +24,7 @@ const config = {
       },
       colors: {
         grayColor: "rgba(var(--grayColor))",
+        inActConvo: "rgba(var(--inActConvo))",
         authRed: "rgba(var(--authRed))",
         authDark: "rgba(var(--authDark))",
         leftSideBar: "rgba(var(--leftSideBar))",
