@@ -58,14 +58,17 @@ chat-interface/
 ## Interacting with the app on running # npm run dev
 
 ## Login Interface
-A login interface which has input details as email and password where a user will be able to log in.
+- A login interface which has input details as email and password where a user will be able to log in.
 Upon a Successful login, The user will be redirected to the chatbot interface
 
 ## Sign up
-In a case where its the users first time interacting with the app, He will be  require to sign up to the chatbot in other to be registered in the database.
+- In a case where its the users first time interacting with the app, He will be  require to sign up to the chatbot in other to be registered in the database.
 The user is route to the chat interface immediately after signing up.
 
-- Note that passwords must be eight characters in length and must include at lease 1 letter of the alphabet
+## Logout Button
+- There is a logout button where the user can logout of the chat-app. In that case, he will not be allowed to accessd the chat page unless he logs in with his correctt credentials again.
+
+# Note that passwords must be eight characters in length and must include at lease 1 letter of the alphabet
 
 
 
