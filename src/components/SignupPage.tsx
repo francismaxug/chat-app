@@ -70,10 +70,10 @@ const Signup = () => {
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="  grid md:grid-cols-[400px_1fr] 3xl:grid-cols-[450px_1fr] 4xl:grid-cols-[470px_1fr]  overflow-hidden rounded-sm bg-white my-5"
+      className="  grid md:grid-cols-[400px_1fr] 3xl:grid-cols-[450px_1fr] 4xl:grid-cols-[470px_1fr] w-full  overflow-hidden rounded-sm bg-white my-5"
     >
       <div className="  px-3  sm:px-20 md:px-2  ">
-        <div className="flex flex-col py-7 4xl:py-10 px-9 gap-y-7  ">
+        <div className="flex flex-col py-7 4xl:py-10 px-5 gap-y-7  ">
           <div className=" flex justify-center flex-col gap-y-4 items-center">
             <div className=" bg-pinkBtn rounded text-center font-manrope size-16 text-xs text-white/80 flex items-center justify-center ">
               CHATBOT
@@ -95,8 +95,8 @@ const Signup = () => {
                   type="email"
                   name="email"
                   required
-                  placeholder="text@mail.com"
-                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
+                  placeholder="email"
+                  className=" border outline-none text-[1rem] placeholder:text-sm rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -111,7 +111,7 @@ const Signup = () => {
                   name="name"
                   required
                   placeholder="Firstname Lastname"
-                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
+                  className=" border outline-none text-[1rem] placeholder:text-sm rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -125,8 +125,9 @@ const Signup = () => {
                   <input
                     type={passwordVisible ? "password" : "text"}
                     name="password"
+                    placeholder="password"
                     required
-                    className=" border outline-none text-[0.85rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs 3xl:py-[0.7rem] rounded px-2 text-grayColor w-full"
+                    className=" border outline-none text-[1rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-sm 3xl:py-[0.7rem] rounded px-2 text-grayColor w-full"
                   />
                   <div
                     onClick={() => setPasswordVisible((p) => !p)}
@@ -152,7 +153,8 @@ const Signup = () => {
                     type={passwordVisible ? "password" : "text"}
                     name="confirmPassword"
                     required
-                    className=" border outline-none text-[0.85rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs 3xl:py-[0.7rem] rounded px-2 text-grayColor w-full"
+                    placeholder="confirm password"
+                    className=" border outline-none text-[1rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-sm 3xl:py-[0.7rem] rounded px-2 text-grayColor w-full"
                   />
                   <div
                     onClick={() => setPasswordVisible((p) => !p)}

@@ -69,10 +69,10 @@ const Login = () => {
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="  grid md:grid-cols-[400px_1fr] 3xl:grid-cols-[470px_1fr] 4xl:grid-cols-[520px_1fr] overflow-hidden rounded-sm bg-white my-12 3xl:my-14 4xl:my-20"
+      className="  grid md:grid-cols-[400px_1fr]  3xl:grid-cols-[470px_1fr] 4xl:grid-cols-[520px_1fr] overflow-hidden rounded-sm w-full bg-white my-12 3xl:my-14 4xl:my-20"
     >
       <div className="  px-3  sm:px-20 md:px-2 py-6 3xl:py-10  ">
-        <div className="flex flex-col py-7 px-9 gap-y-4  ">
+        <div className="flex flex-col py-7 gap-y-4 px-5">
           <div className=" flex justify-center flex-col gap-y-4 items-center">
             <div className=" bg-pinkBtn rounded text-center font-manrope size-16 text-xs text-white/80 flex items-center justify-center ">
               CHATBOT
@@ -81,9 +81,9 @@ const Login = () => {
               Log In
             </p>
           </div>
-          <form className=" space-y-9 w-full" action={formAction}>
-            <div className=" space-y-5">
-              <div className=" flex flex-col gap-y-[0.2rem]">
+          <form className=" space-y-9 w-full " action={formAction}>
+            <div className=" space-y-5 w-full">
+              <div className=" flex flex-col gap-y-[0.2rem] w-full">
                 <label
                   htmlFor="email"
                   className=" text-authRed font-manrope text-xs 3xl:text-sm"
@@ -94,8 +94,8 @@ const Login = () => {
                   type="email"
                   name="email"
                   required
-                  placeholder="text@mail.com"
-                  className=" border outline-none text-[0.85rem] placeholder:text-xs rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
+                  placeholder="email"
+                  className=" border outline-none text-[1rem] placeholder:text-sm rounded px-2 py-[0.7rem] 3xl:py-[0.7rem] sm:py-[0.4rem] text-grayColor w-full"
                 />
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
@@ -107,9 +107,10 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  placeholder="password"
                   required
                   name="password"
-                  className=" border outline-none text-[0.85rem]  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 3xl:py-[0.7rem] text-grayColor w-full"
+                  className=" border outline-none text-[1rem]  py-[0.7rem] sm:py-[0.4rem] placeholder:text-sm rounded px-2 3xl:py-[0.7rem] text-grayColor w-full"
                 />
               </div>
             </div>
@@ -126,7 +127,7 @@ const Login = () => {
         </div>
       </div>
       <div className="hidden md:block">
-        <div className=" h-full">
+        <div className=" h-full w-full">
           <Image
             src="/images/robot_sitting.jpg"
             width={2000}
