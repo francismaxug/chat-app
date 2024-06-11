@@ -57,18 +57,19 @@ chat-interface/
 
 ## Interacting with the app on running # npm run dev
 
-#Login Interface
+## Login Interface
 A login interface which has input details as email and password where a user will be able to log in.
 Upon a Successful login, The user will be redirected to the chatbot interface
 
-#Sign up
+## Sign up
 In a case where its the users first time interacting with the app, He will be  require to sign up to the chatbot in other to be registered in the database.
 The user is route to the chat interface immediately after signing up.
-# Note that passwords must be eight characters in length and must include at lease 1 letter of the alphabet
+
+- Note that passwords must be eight characters in length and must include at lease 1 letter of the alphabet
 
 
 
-# Chat Interface
+## Chat Interface
 
 A chat interface application with authentication, conversation management, and real-time chat features.
 
@@ -84,6 +85,6 @@ A chat interface application with authentication, conversation management, and r
 
 
 
-## App Deploy on Vercel!!!
+## App Deployed on Vercel!!!
 
 
