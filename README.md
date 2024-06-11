@@ -1,61 +1,89 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project with TypeScript and tailwindCss
 
-## Getting Started
+## Clone Repository
+git clone https://github.com/francismaxug/chat-app.git
+cd chat-app
+
+## Install dependencies
+npm install
+
+## Configure Environment Variables
+Create a .env file at the root of the project with the following content:
+
+SECRETE_KEY = your_secrete_key
+
+## Run the project
+npm run dev
+
+
+
+## Project structure
 
 chat-interface/
 ├── public/
-│   ├── index.html
+│   ├── images/
 │   └── ...
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── ChatWindow/
-│   │   │   ├── ChatMessage.js
-│   │   │   ├── ChatInput.js
-│   │   │   └── ChatWindow.js
-│   │   ├── Sidebar/
-│   │   │   ├── ConversationList.js
-│   │   │   └── Sidebar.js
-│   │   ├── Loader/
-│   │   │   └── LoadingSpinner.js
-│   │   ├── Auth/
-│   │   │   ├── Login.js
-│   │   │   └── AuthContext.js
-│   │   ├── App.js
-│   │   ├── Navbar.js
-│   │   └── ...
-│   ├── contexts/
-│   │   ├── ChatContext.js
-│   │   └── AuthContext.js
-│   ├── hooks/
-│   │   └── useFetch.js
+│   ├── app/
+│   │    ├── (auth)/
+│   │        ├── login/
+│   │   │        ├── login.tsx
+│   │   │    ├── signup/
+│   │   │        ├── signup.tsx
+              ├── layout.tsx
+              ├── page.tsx
+│   │   ├── actions/
+│   │   │   ├── auth.ts
+│   │   │  
+│   │   ├── contexts/
+│   │   │   └── AppContext.tsx
+│   │   ├── (dashboard)/
+│   │   │──.......   
+│   │   │   
+│   ├── components/  
+│   │   │   ├── .....
+│   ├── middleware.ts
+│   │── libs/   
 │   ├── services/
 │   │   └── api.js
 │   ├── styles/
-│   │   └── App.css
-│   └── index.js
+│   │   └── globals.css
+│   └── 
 ├── .env
 ├── package.json
 └── README.md
 
+## The CHATBOT-APP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Interacting with the app on running # npm run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#Login Interface
+A login interface which has input details as email and password where a user will be able to log in.
+Upon a Successful login, The user will be redirected to the chatbot interface
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#Sign up
+In a case where its the users first time interacting with the app, He will be  require to sign up to the chatbot in other to be registered in the database.
+The user is route to the chat interface immediately after signing up.
+# Note that passwords must be eight characters in length and must include at lease 1 letter of the alphabet
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Chat Interface
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+A chat interface application with authentication, conversation management, and real-time chat features.
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Authentication**: Access restricted to users with correct login credentials.
+- **Sidebar**: Displays all user conversations with options to create, delete, and switch between conversations.
+- **Chat Window**: Displays the chat history of the selected conversation.
+- **Send Message**: Send messages within the chat window.
+- **Chatbot Response Typing Animation**: Simulates typing animation for chatbot responses.
+- **Loading Spinners**: Displays loading spinners for chat history and conversation list when fetching data from the API.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+## App Deploy on Vercel!!!
+
+
