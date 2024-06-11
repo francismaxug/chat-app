@@ -13,7 +13,7 @@ const ChatBotHeader = () => {
   console.log(showMenu)
   return (
     <>
-      <div className=" bg-topNav mb-3 px-2 sm:rounded py-3 border sm:py-2 lg:py-1  items-center gap-x-1 flex justify-between">
+      <div className=" bg-topNav mb-3 px-2 sm:rounded py-3 border sm:py-2 lg:py-1 3xl:py-[0.5rem]  items-center gap-x-1 flex justify-between">
         <Link
           href="/chat"
           className=" relative gap-x-2  flex items-center  rounded-full "

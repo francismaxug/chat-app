@@ -52,7 +52,6 @@ const Conversations = () => {
 
   const handleChangeRoute = (label: string, id: number) => {
     router.push(`/chat/${label}?id=${id}`)
-  
   }
 
   if (loading)
@@ -63,14 +62,14 @@ const Conversations = () => {
     )
   return (
     <>
-      <div className=" space-y-1 ">
+      <div className="  flex flex-col gap-y-[0.35rem]">
         {conversationRecord.length === 0 ? (
           <>
-            <div className=" flex flex-col items-center gap-y-1">
-              <h1 className="text-center  text-lg mt-36">
+            <div className=" flex flex-col items-center gap-y-1 4xl:gap-y-2">
+              <h1 className="text-center  text-lg mt-36 4xl:mt-48 4xl:text-xl">
                 No conversation found!!
               </h1>
-              <div className=" cursor-pointer bg-topNav  rounded-full px-4 w-1/2 py-1 md:py-[0.16rem]  ">
+              <div className=" cursor-pointer bg-topNav  rounded-full px-4 w-1/2 py-1 4xl:py-2 md:py-[0.16rem]  ">
                 <AddConversationBtn>
                   <p className="text-lg text-white">Create</p>
                   <FiPlus className=" text-white text-2xl lg:text-[1.3rem]" />
@@ -91,9 +90,9 @@ const Conversations = () => {
                   conversation.label === params.label
                     ? "bg-pinkBtn text-white"
                     : "bg-inActConvo text-black"
-                }  flex justify-between items-center md:py-[0.45rem] py-[0.85rem] text-[0.85rem]  px-2 rounded`}
+                }  flex justify-between items-center md:py-[0.45rem] 2xl:py-[0.65rem] 3xl:py-[0.9rem] py-[0.85rem] text-[0.85rem]  px-2 rounded`}
               >
-                <p className=" text-[1rem] lg:text-[0.9rem]">
+                <p className=" text-[1rem] lg:text-[0.9rem] 3xl:text-[1rem] 4xl:text-[1.1rem]">
                   Conversation {conversation.id}
                 </p>
                 <FaRegTrashAlt
@@ -107,14 +106,16 @@ const Conversations = () => {
                     conversation.label === params.label
                       ? " text-white"
                       : " text-black"
-                  }  text-[1.1rem] sm:text-[0.9rem] cursor-pointer`}
+                  }  text-[1.1rem] sm:text-[0.9rem] 3xl:text-[1rem] 4xl:text-[1.1rem] cursor-pointer`}
                 />
               </button>
             </div>
           ))
         )}
       </div>
-      {addConvoLoading && <Loading className="w-7 h-7 mx-[6rem] mt-2" />}
+      {addConvoLoading && (
+        <Loading className="w-7 h-7 mx-[6rem] mt-2 3xl:ml-[8rem]" />
+      )}
       {openModal && (
         <ConfirmationModal
           modalState={openModal}

@@ -11,7 +11,7 @@ const Chat = () => {
   return (
     <main>
       <ChatBotHeader />
-      <h1 className="text-center  text-xs">{time}</h1>
+      <h1 className="text-center  text-xs 3xl:text-lg">{time}</h1>
       <Suspense fallback={<LoadingMessages />}>
         {" "}
         <Messages />

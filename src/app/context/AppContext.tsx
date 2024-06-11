@@ -22,7 +22,6 @@ interface AppContextProps {
 const AppContext = createContext<AppContextProps | null>(null)
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-
   //states
   const [conversationMessage, setConversationMessage] = useState<
     ConversationMessages[] | []
@@ -32,7 +31,15 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [conversationRecord, setConversationRecord] = useState<
     ConversationsRecords[] | []
   >([])
-  const [convoId, setConvoId] = useState<number | null>(null)
+  const [convoId, setConvoId] = useState<number | null | undefined>(() => {
+    if (typeof window !== "undefined") {
+      const storedConvoId = localStorage?.getItem("convoID")
+      if (storedConvoId !== null) {
+        return JSON.parse(storedConvoId)
+      }
+    }
+    return null // Or undefined, depending on your preference
+  })
   const [chatLoading, setChatLoading] = useState(false)
   const [addConvoLoading, setAddConvoLoading] = useState(false)
   const [authToken, setAuthToken] = useState<string | null | undefined>(() => {
@@ -40,8 +47,10 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       return window.localStorage?.getItem("authToken")
     }
   })
+  console.log(typeof convoId)
 
   // console.log(authToken)
+
   //Functions
 
   //Add records
@@ -129,6 +138,9 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   //Get conversation message by conversation Id
   const queryConversationMessage = async (id: number) => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("convoID", JSON.stringify(id))
+    }
     setConvoId(id)
     console.log(id)
 
@@ -144,6 +156,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
         }
       )
       const data = await response.json()
+      if(data.status ==="error") return toast.error("Too many requests")
       console.log(data)
       setConversationMessage([...data])
     } catch (error) {
@@ -155,6 +168,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   //Fexth conversation records
   useEffect(() => {
+    queryConversationMessage(+convoId!)
     const fetchConversations = async () => {
       try {
         const response = await fetch(
@@ -168,6 +182,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
           }
         )
         const data = await response.json()
+        if(data.status ==="error") return toast.error("Too many requests")
         setConversationRecord(data)
       } catch (error) {
         console.log(error)

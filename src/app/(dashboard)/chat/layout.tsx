@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 
 import "@/styles/globals.css"
 import Container from "./dashboard-components/Container"
@@ -7,7 +6,6 @@ import AppProvider from "@/app/context/AppContext"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Chat bot",

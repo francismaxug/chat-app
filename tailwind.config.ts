@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "3xl": "1600px",
+        "4xl": "1900px",
+      },
       fontFamily: {
         lexend: ["Lexend", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],

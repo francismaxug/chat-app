@@ -6,18 +6,14 @@ import Image from "next/image"
 import Loading from "./Loading"
 
 const Messages = () => {
-  const { conversationMessage, chatLoading } = useAppContext()
-  console.log(conversationMessage)
+  const { conversationMessage, chatLoading, loading } = useAppContext()
 
-  if (conversationMessage[0]?.status === "error")
-    return <h1 className="text-center  mt-36 text-xl">Too many requests</h1>
-
-  // if (loading)
-  //   return (
-  //     <div className="flex justify-center items-center h-[90%] mt-24">
-  //       <Loading />
-  //     </div>
-  //   )
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-[90%] mt-24">
+        <Loading />
+      </div>
+    )
 
   return (
     <>
@@ -46,13 +42,13 @@ const Messages = () => {
                         quality={80}
                         className=" size-9 object-fill object-center rounded-full"
                       />
-                      <p className=" py-1 px-3 rounded-full border text-blue-400 bg-[#F0F9FF] text-[0.9rem]">
+                      <p className=" py-1 px-3 rounded-full border text-blue-400 bg-[#F0F9FF] text-[0.9rem] 4xl:text-[1rem]">
                         {message.content}
                       </p>
                     </div>
                   ) : (
                     <div className=" flex gap-x-2 items-center">
-                      <p className=" py-1 px-3 rounded-full bg-pinkBtn text-[0.95rem] text-white shadow-md">
+                      <p className=" py-1 px-3 rounded-full bg-pinkBtn text-[0.95rem] text-white shadow-md 4xl:text-[1rem]">
                         {message.content}
                       </p>
                       <Image
@@ -69,7 +65,7 @@ const Messages = () => {
               </div>
             ))}
           </div>
-          <div className=" w-[30%] lg:w-[15%]">
+          <div className=" w-[30%] lg:w-[15%] ">
             {chatLoading && <ChatLoading />}
           </div>
         </div>
