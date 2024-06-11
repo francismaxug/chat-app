@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 import "@/styles/globals.css"
-import Demo from "./dashboard-components/Demo"
+import Container from "./dashboard-components/Container"
 import AppProvider from "@/app/context/AppContext"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -22,14 +22,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
+     
         <main>
           <AppProvider>
-            <div className=" mx-0 md:mx-0 lg:mx-32 xl:mx-40">
-              <Demo>{children}</Demo>
+            <div className="lg:mx-32 xl:mx-40 mx-0 ">
+              <Container>{children}</Container>
             </div>
           </AppProvider>
         </main>
         <ToastContainer />
+    
       </body>
     </html>
   )

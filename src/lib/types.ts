@@ -18,4 +18,5 @@ export interface ConversationMessages {
   content: string
   user_id: null | number
   created_at: Date
+  status?: string
 }
