@@ -37,7 +37,7 @@ const TextArea = () => {
           type="submit"
           className="p-[0.6rem] md:p-[0.4rem] bg-pinkBtn  ml-3 mr-1 flex items-center justify-end rounded-full"
         >
-          <FiSend className=" text-white text-3xl md:text-base" />
+          <FiSend className=" text-white text-2xl md:text-base" />
         </button>
       </form>
     </div>

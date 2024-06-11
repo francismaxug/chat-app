@@ -2,13 +2,14 @@
 import { useFormStatus, useFormState } from "react-dom"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Loader2 } from "lucide-react"
 import { signup } from "@/app/actions/auth"
 import { toast } from "react-toastify"
 import { redirect } from "next/navigation"
 import { InitState } from "@/lib/types"
 import { motion } from "framer-motion"
+import { LiaEye, LiaEyeSlash } from "react-icons/lia"
 const initailState: InitState = {
   errorMssage: null,
   status: "",
@@ -44,6 +45,8 @@ function SubmitFxn() {
 }
 
 const Signup = () => {
+  const [passwordVisible, setPasswordVisible] = useState(true)
+
   const [state, formAction] = useFormState(signup, initailState)
 
   useEffect(
@@ -118,12 +121,24 @@ const Signup = () => {
                 >
                   Password
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  required
-                  className=" border outline-none text-[0.85rem]  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
-                />
+                <div className="relative">
+                  <input
+                    type={passwordVisible ? "password" : "text"}
+                    name="password"
+                    required
+                    className=" border outline-none text-[0.85rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
+                  />
+                  <div
+                    onClick={() => setPasswordVisible((p) => !p)}
+                    className=" absolute right-0 cursor-pointer  h-full top-0 flex items-center px-3  justify-center"
+                  >
+                    {passwordVisible ? (
+                      <LiaEyeSlash className=" text-slate-500 " />
+                    ) : (
+                      <LiaEye className=" text-slate-500 " />
+                    )}
+                  </div>
+                </div>
               </div>
               <div className=" flex flex-col gap-y-[0.2rem]">
                 <label
@@ -132,12 +147,24 @@ const Signup = () => {
                 >
                   Confirm Password
                 </label>
-                <input
-                  name="confirmPassword"
-                  required
-                  type="password"
-                  className=" border outline-none text-[0.85rem] py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
-                />
+                <div className="relative">
+                  <input
+                    type={passwordVisible ? "password" : "text"}
+                    name="confirmPassword"
+                    required
+                    className=" border outline-none text-[0.85rem] pr-9  py-[0.7rem] sm:py-[0.4rem] placeholder:text-xs rounded px-2 text-grayColor w-full"
+                  />
+                  <div
+                    onClick={() => setPasswordVisible((p) => !p)}
+                    className=" absolute right-0 cursor-pointer  h-full top-0 flex items-center px-3  justify-center"
+                  >
+                    {passwordVisible ? (
+                      <LiaEyeSlash className=" text-slate-500 " />
+                    ) : (
+                      <LiaEye className=" text-slate-500 " />
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
             <SubmitFxn />

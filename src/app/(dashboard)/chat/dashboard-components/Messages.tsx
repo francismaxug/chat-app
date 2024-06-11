@@ -6,10 +6,11 @@ import Image from "next/image"
 import Loading from "./Loading"
 
 const Messages = () => {
-  const { conversationMessage, chatLoading} = useAppContext()
+  const { conversationMessage, chatLoading } = useAppContext()
   console.log(conversationMessage)
 
-  if (conversationMessage[0]?.status === "error") return <h1 className="text-center  mt-36 text-xl">Too many requests</h1>
+  if (conversationMessage[0]?.status === "error")
+    return <h1 className="text-center  mt-36 text-xl">Too many requests</h1>
 
   // if (loading)
   //   return (
@@ -25,7 +26,7 @@ const Messages = () => {
           <h1 className="text-center  mt-36 text-xl">No mesaages found!!</h1>
         </>
       ) : (
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full py-2">
           <div className="flex flex-col flex-grow p-4 overflow-y-auto">
             {conversationMessage.map((message) => (
               <div
@@ -34,7 +35,7 @@ const Messages = () => {
                   !message.user_id ? "justify-start gap-y-2 " : "justify-end "
                 }`}
               >
-                <div className={` py-1  max-w-xs `}>
+                <div className={` py-1  max-w-xs mb-1 `}>
                   {!message.user_id ? (
                     <div className=" flex gap-x-2 items-center">
                       <Image
@@ -45,7 +46,7 @@ const Messages = () => {
                         quality={80}
                         className=" size-9 object-fill object-center rounded-full"
                       />
-                      <p className=" py-1 px-3 rounded-full border text-blue-400 bg-[#F0F9FF] text-[0.95rem]">
+                      <p className=" py-1 px-3 rounded-full border text-blue-400 bg-[#F0F9FF] text-[0.9rem]">
                         {message.content}
                       </p>
                     </div>
@@ -68,7 +69,9 @@ const Messages = () => {
               </div>
             ))}
           </div>
-          <div className=" w-[13%]">{chatLoading && <ChatLoading />}</div>
+          <div className=" w-[30%] lg:w-[15%]">
+            {chatLoading && <ChatLoading />}
+          </div>
         </div>
       )}
     </>
