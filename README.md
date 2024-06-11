@@ -2,17 +2,42 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+chat-interface/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── ChatWindow/
+│   │   │   ├── ChatMessage.js
+│   │   │   ├── ChatInput.js
+│   │   │   └── ChatWindow.js
+│   │   ├── Sidebar/
+│   │   │   ├── ConversationList.js
+│   │   │   └── Sidebar.js
+│   │   ├── Loader/
+│   │   │   └── LoadingSpinner.js
+│   │   ├── Auth/
+│   │   │   ├── Login.js
+│   │   │   └── AuthContext.js
+│   │   ├── App.js
+│   │   ├── Navbar.js
+│   │   └── ...
+│   ├── contexts/
+│   │   ├── ChatContext.js
+│   │   └── AuthContext.js
+│   ├── hooks/
+│   │   └── useFetch.js
+│   ├── services/
+│   │   └── api.js
+│   ├── styles/
+│   │   └── App.css
+│   └── index.js
+├── .env
+├── package.json
+└── README.md
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
